@@ -19,7 +19,7 @@ routes:
   get "/":
     echo request.headers
     var name = request.headers["X-Forwarded-Host"].partition(".")[0]
-    name = name.replace('_', ' ')
+    name = name.replace('-', ' ')
 
     var content = `div`(
         `div`(
