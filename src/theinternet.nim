@@ -11,25 +11,20 @@ settings:
   bindAddr = "127.0.0.1"
 
 proc layout(content: string): string = htmlgen.html(htmlgen.body(
-    script(src="/nim.js", `type`="text/javascript"),
-    script(src="/client.js", `type`="text/javascript"),
-    link(href="/app.css", rel="stylesheet"),
+    # link(href="/app.css", rel="stylesheet"),
     content
 ))
 
 routes:
   get "/":
-    var name = "" & request.host.partition(".")[0]
+    echo request.headers
+    var name = request.headers["X-Forwarded-Host"].partition(".")[0]
     name = name.replace('_', ' ')
 
     var content = `div`(
         `div`(
-          h2("Hello, I am " & name.title() & "."),
-          h1("I am from The Internet."),
+          h2("Hello, I'm " & name.title() & ".", style="text-align: center;"),
+          h1("I am from The Internet.", style="text-align: center;"),
         ))
     
     resp layout(content)
-
-  get "/app.css":
-    const appCSS = staticRead "static/app.css"
-    resp appCSS
