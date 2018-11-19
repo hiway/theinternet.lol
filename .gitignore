@@ -104,4 +104,6 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
-theinternet
+.idea
+*.pem
+ssl.*
