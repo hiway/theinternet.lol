@@ -33,7 +33,7 @@ else:
                 static_url_path='/static',
                 )
 
-app.secret_key = 'lelblahblargh'
+app.secret_key = os.getenv('SECRET_KEY', uuid4().hex)
 counter = defaultdict()
 
 
