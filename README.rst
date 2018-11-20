@@ -15,13 +15,15 @@ Replace 'YOUR-NAME' with your name send / paste / embed the URL where appropriat
 Develop:
 --------
 
-```
-git clone https://github.com/hiway/theinternet.lol.git
-cd theinternet.lol
-pipenv --three
-pipenv shell
-pip install plumbum pyinstaller
-pip install -e .
-python build.py
-./dist/theinternet
-```
+Python-3.6+ with pipenv is required.
+
+::
+
+    git clone https://github.com/hiway/theinternet.lol.git
+    cd theinternet.lol
+    pipenv --three
+    pipenv shell
+    pip install plumbum pyinstaller
+    pip install -e .
+    python build.py
+    ./dist/theinternet
