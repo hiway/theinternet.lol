@@ -39,5 +39,5 @@ counter = defaultdict()
 
 @app.route('/')
 async def hello():
-    name = request.headers['X-Forwarded-Host'].split('.')[0].replace('-',' ')
+    name = request.headers['X-Forwarded-Host'].split('.')[0].replace('-', ' ')
     return home.render(name=name.title())
