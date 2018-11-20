@@ -107,3 +107,5 @@ venv.bak/
 .idea
 *.pem
 ssl.*
+
+frozen_static.py
