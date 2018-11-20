@@ -41,10 +41,3 @@ counter = defaultdict()
 async def hello():
     name = request.headers['X-Forwarded-Host'].split('.')[0].replace('-',' ')
     return home.render(name=name.title())
-
-
-@app.websocket('/ws')
-async def ws():
-    while True:
-        await websocket.send('hello')
-        await asyncio.sleep(3)
