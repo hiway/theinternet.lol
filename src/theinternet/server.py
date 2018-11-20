@@ -39,5 +39,15 @@ counter = defaultdict()
 
 @app.route('/')
 async def hello():
-    name = request.headers['X-Forwarded-Host'].split('.')[0].replace('-', ' ')
+    try:
+        hostname = request.headers['X-Forwarded-Host']
+    except KeyError:
+        try:
+            hostname = request.headers['Host']
+            if hostname.startswith('127.') or hostname == 'localhost':
+                hostname = 'local-user.theinternet.lol'
+        except KeyError:
+            hostname = 'unknown.theinternet.lol'
+
+    name = hostname.split('.')[0].replace('-', ' ')
     return home.render(name=name.title())
