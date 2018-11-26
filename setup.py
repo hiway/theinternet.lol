@@ -35,6 +35,7 @@ setup(
         'quart',
         'makeweb',
         'atum',
+        'idna',
     ],
     dev_requires=[
         'plumbum',

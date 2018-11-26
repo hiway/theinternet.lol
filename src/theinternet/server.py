@@ -1,6 +1,7 @@
 import asyncio
 import os
 import sys
+import idna
 from collections import defaultdict
 from uuid import uuid4
 
@@ -50,4 +51,8 @@ async def hello():
             hostname = 'unknown.theinternet.lol'
 
     name = hostname.split('.')[0].replace('-', ' ')
+    try:
+        name = idna.decode(name)
+    except:
+        pass
     return home.render(name=name.title())
