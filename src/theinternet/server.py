@@ -2,6 +2,7 @@ import asyncio
 import os
 import sys
 import idna
+import traceback
 from collections import defaultdict
 from uuid import uuid4
 
@@ -50,9 +51,9 @@ async def hello():
         except KeyError:
             hostname = 'unknown.theinternet.lol'
 
-    name = hostname.split('.')[0]
+    
     try:
-        name = idna.decode(name)
+        name = idna.decode(hostname).split('.')[0]
     except:
-        pass
+        name = hostname.split('.')[0]
     return home.render(name=name.title().replace('-', ' '))
