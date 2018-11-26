@@ -50,9 +50,9 @@ async def hello():
         except KeyError:
             hostname = 'unknown.theinternet.lol'
 
-    name = hostname.split('.')[0].replace('-', ' ')
+    name = hostname.split('.')[0]
     try:
         name = idna.decode(name)
     except:
         pass
-    return home.render(name=name.title())
+    return home.render(name=name.title().replace('-', ' '))
